@@ -9,7 +9,7 @@ const ENV = {
     SITE_NAME: 'Foci Finance',
     SITE_URL: 'https://focifinance.com',
     CONTACT_EMAIL: 'info@focifinance.com',
-    SUPPORT_EMAIL: 'support@focifinance.com',
+    SUPPORT_EMAIL: 'Deepeshtech8433@gmail.com',
     COMPANY_NAME: 'Foci Finance',
     FOUNDER_NIKHIL: 'Nikhil Singh',
     FOUNDER_DEEPESH: 'Deepesh Sharma',
@@ -19,9 +19,9 @@ const ENV = {
     TRACKED_STOCKS: ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'META', 'NVDA', 'JPM', 'JNJ', 'V'],
     MARKET_INDICES: ['^DJI', '^GSPC', '^IXIC'],
     // UPDATED: Stock refresh every 5 minutes, News refresh every 1 hour
-    STOCK_REFRESH_INTERVAL: 300000, // 5 minutes in milliseconds
-    NEWS_REFRESH_INTERVAL: 3600000, // 1 hour in milliseconds
-    MARKET_STATUS_REFRESH: 60000,
+    STOCK_REFRESH_INTERVAL: 30000, // 5 minutes in milliseconds
+    NEWS_REFRESH_INTERVAL: 360000, // 1 hour in milliseconds
+    MARKET_STATUS_REFRESH: 6000,
     DEFAULT_CURRENCY: 'USD',
     DEFAULT_LANGUAGE: 'en',
     TIMEZONE: 'America/New_York',
