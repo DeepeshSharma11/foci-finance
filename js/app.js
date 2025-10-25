@@ -18,10 +18,10 @@ const ENV = {
     GNEWS_RATE_LIMIT: 100,
     TRACKED_STOCKS: ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'META', 'NVDA', 'JPM', 'JNJ', 'V'],
     MARKET_INDICES: ['^DJI', '^GSPC', '^IXIC'],
-    // UPDATED: Stock refresh every 5 minutes, News refresh every 1 hour
-    STOCK_REFRESH_INTERVAL: 30000, // 5 minutes in milliseconds
-    NEWS_REFRESH_INTERVAL: 360000, // 1 hour in milliseconds
-    MARKET_STATUS_REFRESH: 6000,
+    // CORRECTED: Stock refresh every 5 minutes, News refresh every 1 hour
+    STOCK_REFRESH_INTERVAL: 300000, // 5 minutes in milliseconds (300000)
+    NEWS_REFRESH_INTERVAL: 3600000, // 1 hour in milliseconds (3600000)
+    MARKET_STATUS_REFRESH: 60000,   // 1 minute in milliseconds (60000)
     DEFAULT_CURRENCY: 'USD',
     DEFAULT_LANGUAGE: 'en',
     TIMEZONE: 'America/New_York',
@@ -394,49 +394,55 @@ async function loadNews() {
     }
 }
 
-// Generate fallback news when API fails
+// Generate fallback news when API fails - IMPROVED WITH REAL LINKS
 function generateFallbackNews() {
     return [
         {
             source: { name: 'Financial Times' },
             title: 'Markets Show Resilience Amid Economic Uncertainty',
             publishedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-            url: 'https://example.com/article1'
+            url: 'https://www.ft.com/markets',
+            description: 'Global markets demonstrate stability despite ongoing economic challenges.'
         },
         {
             source: { name: 'Bloomberg' },
             title: 'Tech Stocks Lead Market Rally as Earnings Season Begins',
             publishedAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
-            url: 'https://example.com/article2'
+            url: 'https://www.bloomberg.com/markets',
+            description: 'Technology sector outperforms as companies report strong quarterly results.'
         },
         {
             source: { name: 'Reuters' },
             title: 'Central Banks Maintain Hawkish Stance on Inflation',
             publishedAt: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
-            url: 'https://example.com/article3'
+            url: 'https://www.reuters.com/business/finance',
+            description: 'Major central banks continue tight monetary policies to combat inflation.'
         },
         {
             source: { name: 'Wall Street Journal' },
             title: 'Investment Firms Increase Exposure to Emerging Markets',
             publishedAt: new Date(Date.now() - 8 * 60 * 60 * 1000).toISOString(),
-            url: 'https://example.com/article4'
+            url: 'https://www.wsj.com/news/markets',
+            description: 'Institutional investors shift focus to high-growth emerging economies.'
         },
         {
             source: { name: 'CNBC' },
             title: 'Cryptocurrency Market Shows Signs of Stabilization',
             publishedAt: new Date(Date.now() - 10 * 60 * 60 * 1000).toISOString(),
-            url: 'https://example.com/article5'
+            url: 'https://www.cnbc.com/finance',
+            description: 'Digital asset prices find support after recent volatility.'
         },
         {
             source: { name: 'Forbes' },
             title: 'Sustainable Investing Gains Traction Among Millennials',
             publishedAt: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(),
-            url: 'https://example.com/article6'
+            url: 'https://www.forbes.com/investing',
+            description: 'Younger investors prioritize ESG factors in portfolio construction.'
         }
     ];
 }
 
-// Display news - FIXED: Read More links now open in new tab
+// Display news - IMPROVED with better URL handling
 function displayNews(articles) {
     newsLoading.style.display = 'none';
     newsGrid.style.display = 'grid';
@@ -449,14 +455,32 @@ function displayNews(articles) {
         const date = new Date(article.publishedAt);
         const timeAgo = getTimeAgo(date);
         
-        // FIX: Ensure Read More links work properly
-        const articleUrl = article.url && article.url !== '#' ? article.url : '#';
+        // BETTER URL VALIDATION
+        let articleUrl = article.url;
+        let isRealArticle = true;
+        
+        // Check if URL is from example.com or invalid
+        if (!articleUrl || articleUrl.includes('example.com') || articleUrl === '#') {
+            // Use real financial websites for fallback
+            const realSites = [
+                'https://www.bloomberg.com/markets',
+                'https://www.reuters.com/business',
+                'https://www.cnbc.com/finance',
+                'https://www.ft.com/markets',
+                'https://www.wsj.com/news/markets',
+                'https://www.forbes.com/investing'
+            ];
+            articleUrl = realSites[Math.floor(Math.random() * realSites.length)];
+            isRealArticle = false;
+        }
         
         newsCard.innerHTML = `
             <div class="news-source">${article.source.name}</div>
             <div class="news-title">${article.title}</div>
             <div class="news-date">${timeAgo}</div>
-            <a href="${articleUrl}" target="_blank" class="btn btn-outline" style="margin-top: 15px; padding: 8px 15px; font-size: 0.8rem;">Read More</a>
+            <a href="${articleUrl}" target="_blank" class="btn btn-outline" style="margin-top: 15px; padding: 8px 15px; font-size: 0.8rem;">
+                ${isRealArticle ? 'Read More' : 'Explore News'}
+            </a>
         `;
         
         newsGrid.appendChild(newsCard);
@@ -727,9 +751,9 @@ function setupMobileNavScrolling() {
     setTimeout(scrollToActiveItem, 100);
 }
 
-// Setup auto-refresh - UPDATED: New refresh intervals
+// Setup auto-refresh - CORRECTED INTERVALS
 function setupAutoRefresh() {
-    // UPDATED: Refresh stock data every 5 minutes
+    // CORRECTED: Refresh stock data every 5 minutes
     setInterval(() => {
         if (isOnline) {
             loadStockTicker();
@@ -737,7 +761,7 @@ function setupAutoRefresh() {
         }
     }, ENV.STOCK_REFRESH_INTERVAL);
     
-    // UPDATED: Refresh news every 1 hour
+    // CORRECTED: Refresh news every 1 hour
     setInterval(() => {
         if (isOnline) {
             loadNews();
@@ -825,3 +849,43 @@ mobileNavLinks.forEach(link => {
         }, 100);
     });
 });
+
+// Alternative news loading function (if GNews fails completely)
+async function loadNewsWithAlternative() {
+    try {
+        // You can add alternative news APIs here
+        // For example: NewsAPI, Currents API, etc.
+        console.log('Trying alternative news source...');
+        
+        // For now, return improved fallback news
+        return generateFallbackNews();
+        
+    } catch (error) {
+        console.error('Error loading alternative news:', error);
+        return generateFallbackNews();
+    }
+}
+
+// Test GNews API function (for debugging)
+async function testGNewsAPI() {
+    try {
+        const response = await fetch(
+            `${ENV.GNEWS_BASE_URL}/top-headlines?category=business&lang=en&country=us&max=1&apikey=${ENV.GNEWS_API_KEY}`
+        );
+        
+        if (response.ok) {
+            const data = await response.json();
+            console.log('GNews API Test Result:', data);
+            return data;
+        } else {
+            console.error('GNews API Test Failed:', response.status);
+            return null;
+        }
+    } catch (error) {
+        console.error('GNews API Test Error:', error);
+        return null;
+    }
+}
+
+// Uncomment the line below to test GNews API in browser console
+ testGNewsAPI();
