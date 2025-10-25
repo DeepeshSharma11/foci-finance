@@ -922,7 +922,7 @@ mobileNavLinks.forEach(link => {
         
         // Scroll to active item
         setTimeout(() => {
-            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileNclav = document.querySelector('.mobile-nav');
             const containerWidth = mobileNav.offsetWidth;
             const itemOffset = this.offsetLeft;
             const itemWidth = this.offsetWidth;
