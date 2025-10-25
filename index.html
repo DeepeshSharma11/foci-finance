@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foci Finance - Live Trading & Financial Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">F</div>
+                <div class="logo-text">Foci<span>Finance</span></div>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#live-markets">Live Markets</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#calculator">Calculator</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Live Stock Ticker -->
+    <div class="stock-ticker">
+        <div class="ticker-container" id="stockTicker">
+            <!-- Stock data will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Hero Section with Live Data -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Live Trading & Financial Solutions <span class="live-indicator"><i class="fas fa-circle"></i> LIVE</span></h1>
+                <p>Real-time market data, advanced trading tools, and personalized investment strategies. Stay ahead with Foci Finance.</p>
+                <div class="hero-buttons">
+                    <a href="#live-markets" class="btn">View Live Markets</a>
+                    <a href="#calculator" class="btn btn-outline">Financial Calculators</a>
+                </div>
+                
+                <!-- Quick Market Stats -->
+                <div class="market-stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="dowJones">Loading...</div>
+                        <div class="stat-label">DOW JONES</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="sp500">Loading...</div>
+                        <div class="stat-label">S&P 500</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="nasdaq">Loading...</div>
+                        <div class="stat-label">NASDAQ</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="trading-widget">
+                    <div class="widget-header">
+                        <div class="widget-title">Live Market Overview</div>
+                        <div class="market-status" id="marketStatus">
+                            <i class="fas fa-circle"></i>
+                            <span>Loading...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="price-chart">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                    
+                    <div class="price-info">
+                        <div class="current-price" id="currentPrice">$42,567.89</div>
+                        <div class="price-change" id="priceChange">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+2.34%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="trading-pairs">
+                        <div class="trading-pair active" data-symbol="AAPL">AAPL</div>
+                        <div class="trading-pair" data-symbol="GOOGL">GOOGL</div>
+                        <div class="trading-pair" data-symbol="MSFT">MSFT</div>
+                        <div class="trading-pair" data-symbol="TSLA">TSLA</div>
+                    </div>
+                    
+                    <div class="trading-actions">
+                        <a href="#" class="btn btn-accent">Buy</a>
+                        <a href="#" class="btn btn-outline">Sell</a>
+                    </div>
+                </div>
+                
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why Choose Foci Finance</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Advanced Security</h3>
+                    <p>Bank-level encryption and multi-factor authentication to keep your financial data and trading accounts secure. All transactions are monitored 24/7 for suspicious activities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast Execution</h3>
+                    <p>High-frequency trading capabilities with execution speeds under 10 milliseconds for optimal trading performance. Our infrastructure ensures minimal latency across global markets.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Smart Analytics</h3>
+                    <p>AI-powered market insights, technical analysis tools, and personalized trading recommendations. Our algorithms analyze millions of data points to provide actionable insights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Financial Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-candlestick"></i>
+                    </div>
+                    <h3>Stock Trading</h3>
+                    <p>Trade stocks, ETFs, and options with competitive commissions and advanced order types. Access to 50+ global markets with real-time data and research tools.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 15px; color: white; border-color: white;">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <h3>Crypto Trading</h3>
+                    <p>Access 200+ major cryptocurrencies with secure wallets and advanced trading features. 24/7 trading with institutional-grade security and liquidity.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 15px; color: white; border-color: white;">Explore Crypto</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Forex Trading</h3>
+                    <p>Trade 80+ major, minor, and exotic currency pairs with tight spreads and leverage up to 1:500. Advanced charting tools and economic calendar included.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 15px; color: white; border-color: white;">Start Forex</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Portfolio Management</h3>
+                    <p>Professional portfolio management services tailored to your investment goals and risk tolerance. Regular performance reviews and strategy adjustments.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 15px; color: white; border-color: white;">Manage Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section class="performance-section">
+        <div class="container">
+            <h2>Performance Metrics</h2>
+            <div class="performance-grid">
+                <div class="performance-card">
+                    <div class="performance-value" id="totalUsers">1.2M+</div>
+                    <div class="performance-label">Active Users</div>
+                </div>
+                <div class="performance-card">
+                    <div class="performance-value" id="dailyTrades">850K+</div>
+                    <div class="performance-label">Daily Trades</div>
+                </div>
+                <div class="performance-card">
+                    <div class="performance-value" id="assetsUnder">$4.8B</div>
+                    <div class="performance-label">Assets Under Management</div>
+                </div>
+                <div class="performance-card">
+                    <div class="performance-value" id="avgReturns">12.7%</div>
+                    <div class="performance-label">Average Annual Returns</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Markets Section -->
+    <section class="features" id="live-markets">
+        <div class="container">
+            <h2>Live Market Data <span class="live-indicator"><i class="fas fa-circle"></i> REAL-TIME</span></h2>
+            <div id="marketsLoading" class="loading">
+                <i class="fas fa-spinner fa-spin"></i> Loading market data...
+            </div>
+            <div id="marketsError" class="error-message" style="display: none;">
+                Unable to load market data. Please check your connection.
+            </div>
+            <div class="features-grid" id="marketsGrid" style="display: none;">
+                <!-- Market data will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading Tools Section -->
+    <section class="trading-tools" id="trading-tools">
+        <div class="container">
+            <h2>Advanced Trading Tools</h2>
+            <div class="tools-container">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Technical Analysis</h3>
+                    <p>Advanced charting tools with over 100 technical indicators and drawing tools for comprehensive market analysis. Customizable layouts and timeframes.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 15px;">Explore Tools</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Price Alerts</h3>
+                    <p>Set custom price alerts for your favorite assets and receive notifications via email, SMS, or push notifications. Never miss a trading opportunity again.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 15px;">Set Alerts</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Automated Trading</h3>
+                    <p>Create and deploy automated trading strategies with our intuitive visual strategy builder and backtesting tools. No coding experience required.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 15px;">Build Strategy</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>Market News & Analysis</h3>
+                    <p>Stay informed with real-time market news, expert analysis, and economic calendar updates. Curated content from leading financial publications.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 15px;">Read News</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live News Section -->
+    <section class="news-section" id="news">
+        <div class="container">
+            <h2>Latest Financial News <span class="live-indicator"><i class="fas fa-circle"></i> UPDATED</span></h2>
+            <div id="newsLoading" class="loading">
+                <i class="fas fa-spinner fa-spin"></i> Loading latest news...
+            </div>
+            <div id="newsError" class="error-message" style="display: none;">
+                Unable to load news. Please check your connection.
+            </div>
+            <div class="news-grid" id="newsGrid" style="display: none;">
+                <!-- News will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator" id="calculator">
+        <div class="container">
+            <h2>Financial Calculators</h2>
+            <div class="calculator-container">
+                <div class="calculator-form">
+                    <h3>Investment Calculator</h3>
+                    <p>Calculate the future value of your investments with compound interest. Plan your financial future with accurate projections.</p>
+                    
+                    <div class="form-group">
+                        <label for="initialInvestment">Initial Investment ($)</label>
+                        <input type="number" id="initialInvestment" value="10000" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="monthlyContribution">Monthly Contribution ($)</label>
+                        <input type="number" id="monthlyContribution" value="500" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="investmentPeriod">Investment Period (Years)</label>
+                        <input type="number" id="investmentPeriod" value="10" min="1" max="50">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="expectedReturn">Expected Annual Return (%)</label>
+                        <input type="number" id="expectedReturn" value="7" min="0" max="50" step="0.1">
+                    </div>
+                    
+                    <button id="calculateBtn" class="btn" style="width: 100%;">Calculate</button>
+                </div>
+                
+                <div class="calculator-result">
+                    <h3>Investment Projection</h3>
+                    <div class="result-item">
+                        <span>Initial Investment:</span>
+                        <span id="initialResult">$10,000.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Total Contributions:</span>
+                        <span id="contributionsResult">$60,000.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Interest Earned:</span>
+                        <span id="interestResult">$25,937.42</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Future Value:</span>
+                        <span id="futureValueResult">$95,937.42</span>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <canvas id="investmentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Our Office</h3>
+                            <p>123 Finance District, New York, NY 10001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@focifinance.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Business Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM EST</p>
+                            <p>Weekend: 10:00 AM - 2:00 PM EST</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <div id="formMessage" class="form-message"></div>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" style="width: 100%; padding: 10px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; resize: vertical;" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Foci Finance</h3>
+                    <p>Advanced trading platforms and financial solutions for modern investors. Empowering your financial journey with cutting-edge technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#live-markets">Live Markets</a></li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#calculator">Calculator</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Stock Trading</a></li>
+                        <li><a href="#">Crypto Trading</a></li>
+                        <li><a href="#">Forex Trading</a></li>
+                        <li><a href="#">Portfolio Management</a></li>
+                        <li><a href="#">Financial Planning</a></li>
+                        <li><a href="#">Retirement Planning</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Risk Disclosure</a></li>
+                        <li><a href="#">Regulatory Information</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Complaints Procedure</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Foci Finance. All rights reserved. | Founded by Nikhil Singh & Deepesh Sharma | Part of <a href="https://focitech.site" style="color: var(--accent);">FociTech</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation - HORIZONTAL SCROLLING -->
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li>
+                <a href="#home" class="active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#features">
+                    <i class="fas fa-star"></i>
+                    <span>Features</span>
+                </a>
+            </li>
+            <li>
+                <a href="#services">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="#live-markets">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Markets</span>
+                </a>
+            </li>
+            <li>
+                <a href="#news">
+                    <i class="fas fa-newspaper"></i>
+                    <span>News</span>
+                </a>
+            </li>
+            <li>
+                <a href="#calculator">
+                    <i class="fas fa-calculator"></i>
+                    <span>Calculator</span>
+                </a>
+            </li>
+            <li>
+                <a href="#contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

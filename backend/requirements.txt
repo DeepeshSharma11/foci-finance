@@ -1,0 +1,14 @@
+Flask
+Flask-SQLAlchemy
+Flask-CORS
+Flask-JWT-Extended
+Flask-Mail
+Flask-Caching
+Flask-Limiter
+python-dotenv
+requests
+gunicorn
+Werkzeug
+python-dateutil
+pandas
+numpy
