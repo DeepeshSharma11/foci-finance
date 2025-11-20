@@ -300,11 +300,11 @@ nav {
     font-weight: 600;
 }
 
-.positive {
+.price-change.positive {
     color: var(--success);
 }
 
-.negative {
+.price-change.negative {
     color: var(--danger);
 }
 
@@ -983,6 +983,83 @@ footer {
     color: var(--gray);
 }
 
+/* Team Section */
+.leadership-section {
+    background-color: #f8fafc;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.leadership-container {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
+
+.leadership-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.leadership-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+}
+
+.leadership-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.leader-item {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.leader-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.leader-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+    object-fit: contain;
+    background-color: #f3f4f6;
+}
+
+.leader-details {
+    background: #1f2937;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.leader-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.leader-role {
+    font-size: 0.9rem;
+    color: #d1d5db;
+    line-height: 1.4;
+}
+
 /* Responsive Styles */
 @media (max-width: 1024px) {
     .hero-container {
@@ -1045,6 +1122,16 @@ footer {
     .trading-actions {
         flex-direction: column;
     }
+
+    .leadership-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .leader-item {
+        width: 100%;
+        max-width: 400px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1095,6 +1182,10 @@ footer {
     .mobile-nav-links a i {
         font-size: 1.1rem;
     }
+
+    .leadership-title {
+        font-size: 1.6rem;
+    }
 }
 
 /* Performance Optimizations */
@@ -1122,112 +1213,4 @@ footer {
     100% {
         background-position: -200% 0;
     }
-}
-
-
-/* End of CSS */
-
-/*team*/
-
-/* ====== Section Styling ====== */
-.leadership-section {
-  background-color: #f8fafc;
-  padding: 80px 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.leadership-container {
-  max-width: 1200px;
-  width: 100%;
-  text-align: center;
-}
-
-/* ====== Headings ====== */
-.leadership-title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 10px;
-}
-
-.leadership-subtitle {
-  color: #6b7280;
-  font-size: 1rem;
-  max-width: 700px;
-  margin: 0 auto 50px;
-  line-height: 1.6;
-}
-
-/* ====== Cards Layout ====== */
-.leadership-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-/* ====== Individual Card ====== */
-.leader-item {
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  width: 300px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.leader-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* ====== Image Area ====== */
-.leader-photo {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3/4; /* maintains consistent proportions */
-  object-fit: contain; /* ensures full image visible */
-  background-color: #f3f4f6; /* fallback bg if image smaller */
-}
-
-/* ====== Info Text ====== */
-.leader-details {
-  background: #1f2937;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-}
-
-.leader-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.leader-role {
-  font-size: 0.9rem;
-  color: #d1d5db;
-  line-height: 1.4;
-}
-
-/* ====== Responsive Layout ====== */
-@media (max-width: 992px) {
-  .leader-item {
-    width: 45%;
-  }
-}
-
-@media (max-width: 600px) {
-  .leader-item {
-    width: 100%;
-  }
-
-  .leader-photo {
-    aspect-ratio: 4/5;
-  }
-
-  .leadership-title {
-    font-size: 1.6rem;
-  }
 }

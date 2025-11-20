@@ -912,26 +912,6 @@ function handleNewsError(error) {
     newsError.style.display = 'block';
 }
 
-// Mobile Navigation Active State
-const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-
-mobileNavLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        mobileNavLinks.forEach(item => item.classList.remove('active'));
-        this.classList.add('active');
-        
-        // Scroll to active item
-        setTimeout(() => {
-            const mobileNclav = document.querySelector('.mobile-nav');
-            const containerWidth = mobileNav.offsetWidth;
-            const itemOffset = this.offsetLeft;
-            const itemWidth = this.offsetWidth;
-            
-            mobilearNav.scrollLeft = itemOffset - (containerWidth / 2) + (itemWidth / 2);
-        }, 100);
-    });
-});
-
 // Test NewsAPI function
 async function testNewsAPI() {
     try {
@@ -952,6 +932,3 @@ async function testNewsAPI() {
         return null;
     }
 }
-
-// Uncomment to test NewsAPI in browser console
-// testNewsAPI();
