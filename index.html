@@ -14,9 +14,18 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">f</div>
-                <div class="logo-text">Foci<span>Finance</span></div>
+            <a href="#home" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <div class="logo-img" style="display: flex; align-items: center;">
+                    <img src="assets/Logo.png" alt="Foci Finance Logo" 
+                         style="height: 45px; width: auto; transition: all 0.3s ease;"
+                         onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='flex';">
+                </div>
+                <div class="logo-fallback" style="display: flex; align-items: center; gap: 12px;">
+                    
+                    <div class="logo-text" style="font-size: 26px; font-weight: 800; color: #0f172a; line-height: 1;">
+                        Foci<span style="color: #2563eb;">Finance</span>
+                    </div>
+                </div>
             </a>
             
             <nav>
